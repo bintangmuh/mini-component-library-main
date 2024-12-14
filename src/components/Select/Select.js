@@ -24,6 +24,7 @@ const StyleWrapper = styled.select`
 
 const Wrapper = styled.div`
   position: relative;
+  width: max-content;
 `
 
 const NativeSelect = styled.select`
@@ -39,17 +40,28 @@ const NativeSelect = styled.select`
 const PresentationalBit = styled.div`
   background-color: ${COLORS.transparentGray15};
   padding: 12px 16px;
+  padding-right: 52px;
   border-radius: 8px;
 
   color: ${COLORS.gray700};
 
-  &:focus {
+  ${NativeSelect}:focus + & { 
     outline: 2px solid ${COLORS.primary};
   }
 
-  &:hover {
+  ${NativeSelect}:hover + & {
     color: ${COLORS.black};
   }
+`
+
+const IconWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 10px;
+  width: var(--size);
+  height: var(--size);
 `
 
 const Select = ({ label, value, onChange, children }) => {
@@ -62,6 +74,9 @@ const Select = ({ label, value, onChange, children }) => {
       </NativeSelect>
       <PresentationalBit>
         {displayedValue}
+        <IconWrapper style={{ '--size': '24px'}}>
+          <Icon id="chevron-down" size={24} />
+        </IconWrapper>
       </PresentationalBit>
     </Wrapper>
   );
