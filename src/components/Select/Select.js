@@ -46,7 +46,8 @@ const PresentationalBit = styled.div`
   color: ${COLORS.gray700};
 
   ${NativeSelect}:focus + & { 
-    outline: 2px solid ${COLORS.primary};
+    outline: 1px dotted #212121; 
+    outline: 2px solid -webkit-focus-ring-color;
   }
 
   ${NativeSelect}:hover + & {
@@ -62,6 +63,7 @@ const IconWrapper = styled.div`
   right: 10px;
   width: var(--size);
   height: var(--size);
+  pointer-events: none;
 `
 
 const Select = ({ label, value, onChange, children }) => {
