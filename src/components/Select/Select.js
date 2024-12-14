@@ -22,13 +22,48 @@ const StyleWrapper = styled.select`
   }
 `
 
+const Wrapper = styled.div`
+  position: relative;
+`
+
+const NativeSelect = styled.select`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  apperarance: none;
+`
+
+const PresentationalBit = styled.div`
+  background-color: ${COLORS.transparentGray15};
+  padding: 12px 16px;
+  border-radius: 8px;
+
+  color: ${COLORS.gray700};
+
+  &:focus {
+    outline: 2px solid ${COLORS.primary};
+  }
+
+  &:hover {
+    color: ${COLORS.black};
+  }
+`
+
 const Select = ({ label, value, onChange, children }) => {
   const displayedValue = getDisplayedValue(value, children);
 
   return (
-    <StyleWrapper value={value} onChange={onChange}>
-      {children}
-    </StyleWrapper>
+    <Wrapper>
+      <NativeSelect value={value} onChange={onChange}>
+        {children}
+      </NativeSelect>
+      <PresentationalBit>
+        {displayedValue}
+      </PresentationalBit>
+    </Wrapper>
   );
 };
 
